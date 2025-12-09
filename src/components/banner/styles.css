@@ -1,0 +1,44 @@
+.mySwiper,
+.mySwipers {
+  width: 100%;
+}
+
+.mySwipers {
+  padding-bottom: 24px;
+}
+
+.mySwiper .swiper-pagination-bullets {
+  bottom: 0px;
+}
+.mySwipers .swiper-pagination-bullets {
+  bottom: -5px;
+}
+
+.mySwiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #173c65;
+  opacity: 0.35;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.mySwipers .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #173c65;
+  opacity: 0.35;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  width: 14px;
+  height: 14px;
+  opacity: 1;
+}
+.mySwipers .swiper-pagination-bullet-active {
+  width: 14px;
+  height: 14px;
+  opacity: 1;
+}
+

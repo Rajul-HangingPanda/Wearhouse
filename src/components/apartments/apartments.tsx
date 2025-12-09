@@ -1,0 +1,139 @@
+'use client';
+
+import type { ReactElement } from 'react';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { warehouseIndustrial, warehouseShot1, warehouseShot2, warehouseArea } from '@/assets';
+import { Warehouse, Ruler, Building2, Layers } from 'lucide-react';
+import { warehouseConfig } from '@/config/warehouse-content';
+import { bg2 } from '@/assets';
+
+export default function Apartments() {
+  // Convert warehouse features to display cards
+  const features = warehouseConfig.warehouseFeatures.features;
+  const featureImages = [warehouseIndustrial, warehouseShot1, warehouseShot2, warehouseArea];
+
+  // Icon map for feature icons
+  const iconMap: Record<string, ReactElement> = {
+    area: <Ruler className="w-6 h-6 text-[#173C65]" />,
+    rentable: <Building2 className="w-6 h-6 text-[#173C65]" />,
+    warehouse: <Warehouse className="w-6 h-6 text-[#173C65]" />,
+    mezzanine: <Layers className="w-6 h-6 text-[#173C65]" />,
+    height: <Ruler className="w-6 h-6 text-[#173C65]" />,
+    spacing: <Ruler className="w-6 h-6 text-[#173C65]" />,
+  };
+
+  const featureCards = features.map((feature, index) => ({
+    image: featureImages[index % featureImages.length],
+    iconEl: iconMap[feature.icon] || <Warehouse className="w-6 h-6 text-[#173C65]" />,
+    label: feature.label,
+    value: feature.value,
+    description: feature.description,
+  }));
+
+  const bgImageUrl = typeof bg2 === 'string' ? bg2 : bg2.src || bg2;
+  
+  return (
+    <section className="py-16 lg:py-24 bg-white relative overflow-hidden" id="features">
+      {/* Background Image with Opacity */}
+      <div
+        className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-30 z-0"
+        style={{
+          backgroundImage: `url(${bgImageUrl})`,
+        }}
+      />
+      <div className="container max-w-7xl mx-auto  relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-12 lg:mb-16">
+          <h2
+            className="text-4xl lg:text-5xl font-bold mb-6 text-[#173C65] font-['Libre_Baskerville',Georgia,serif] font-normal"
+          >
+            {warehouseConfig.warehouseFeatures.title}
+          </h2>
+          <p
+            className="text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-(--gray) font-(--font-family-sans-serif)"
+          >
+            {warehouseConfig.warehouseFeatures.subtitle}
+          </p>
+        </div>
+
+        {/* Warehouse Features Cards */}
+        <Swiper
+          className="mySwipers"
+          spaceBetween={16}
+          pagination={{ clickable: true }}
+          modules={[Pagination, Autoplay]}
+          autoplay={
+            features.length > 1
+              ? { delay: 5000, disableOnInteraction: false }
+              : false
+          }
+          loop={features.length > 1}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {featureCards.map((card, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <div className="shrink-0 w-full border-2 ">
+                  <div
+                    className="bg-white rounded-lg overflow-hidden shadow-lg transition-shadow hover:shadow-xl border border-gray-100 h-full flex flex-col"
+                  >
+                    {/* Image */}
+                    <div className="relative w-full h-54 overflow-hidden bg-linear-to-br from-slate-50 to-slate-100">
+                      {card.image && (
+                        <Image
+                          src={card.image}
+                          alt={card.label}
+                          fill
+                          className="object-cover rounded-t-lg"
+                        />
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 flex flex-col h-[160px] grow">
+                      {/* Icon and Title */}
+                      <div className="flex items-center gap-3 mb-3">
+                        {card.iconEl}
+                        <h3
+                          className="text-xl font-bold text-[#173C65] font-['Libre_Baskerville',Georgia,serif] text-[1.25rem]"
+                        >
+                          {card.label}
+                        </h3>
+                      </div>
+
+                      {/* Value */}
+                      <div className="mb-2">
+                        <span
+                          className="text-2xl font-bold text-[#173C65]"
+                        >
+                          {card.value}
+                        </span>
+                      </div>
+
+                      {/* Description */}
+                      {card.description && (
+                        <p
+                          className="text-sm text-(--gray) font-(--font-family-sans-serif)"
+                        >
+                          {card.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+    </section>
+  );
+}
