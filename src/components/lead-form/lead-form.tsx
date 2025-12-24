@@ -69,6 +69,8 @@ export default function LeadForm() {
     setIsSubmitted(false);
 
     try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC"
+
       if (!apiHost) {
         throw new Error('API host is not configured.');
       }
@@ -86,6 +88,7 @@ export default function LeadForm() {
           lease_duration: formData.leaseDuration?.trim() || '',
           timeline_to_move_in: formData.timeline?.trim() || '',
           additional_information: formData.additionalNotes?.trim() || '',
+          timezone
         },
       };
 
