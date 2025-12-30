@@ -1,6 +1,7 @@
 "use client";
 
-import { warehouseConfig } from "@/config/warehouse-content";
+import { useWarehouseConfig } from "@/hooks/use-warehouse-config";
+import { useUITranslations } from "@/hooks/use-warehouse-config";
 import {
   CheckCircle2,
   MapPin,
@@ -12,6 +13,8 @@ import Image from "next/image";
 import { warehouseLoc1, warehouseLoc2 } from "@/assets";
 
 export default function LocationComparison() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
   const locations = warehouseConfig.locations.addresses;
   const locationImages = [warehouseLoc1, warehouseLoc2];
 
@@ -21,12 +24,11 @@ export default function LocationComparison() {
         {/* Header */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-xl   lg:text-2xl xl:text-3xl mb-3 md:mb-6 text-[#173C65] fw-bold font-libre">
-            Choose Your Ideal Location
+            {t('locationComparison.title')}
           </h2>
         
           <p className="text-sm md:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed font-['Assistant',sans-serif]">
-            A strategic location, optimized for operational efficiency. Discover
-            how it can perfectly support your business needs.
+            {t('locationComparison.subtitle')}
           </p>
         </div>
 
@@ -78,7 +80,7 @@ export default function LocationComparison() {
                   <div className="flex items-center gap-2 mb-4">
                     <Truck className="w-5 h-5 text-[#173C65]" />
                     <h4 className="text-lg font-bold text-[#173C65] font-['Libre_Baskerville',Georgia,serif]">
-                      Key Advantages
+                      {t('locationComparison.keyAdvantages')}
                     </h4>
                   </div>
                   <ul className="space-y-3">
@@ -114,7 +116,7 @@ export default function LocationComparison() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-opacity text-[#173C65] font-['Assistant',sans-serif]"
                     >
-                      <span>Open in Google Maps</span>
+                      <span>{t('locationComparison.openInMaps')}</span>
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
@@ -125,7 +127,7 @@ export default function LocationComparison() {
                   <div className="flex items-center gap-2 mb-4">
                     <Building2 className="w-5 h-5 text-[#173C65]" />
                     <h4 className="text-lg font-bold text-[#173C65] font-['Libre_Baskerville',Georgia,serif]">
-                      Ideal For
+                      {t('locationComparison.idealFor')}
                     </h4>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-1 gap-2">

@@ -3,9 +3,12 @@
 import { CheckCircle2 } from "lucide-react"
 import Image from "next/image"
 import { locationImage, bg2 } from "@/assets"
-import { warehouseConfig } from "@/config/warehouse-content"
+import { useWarehouseConfig } from "@/hooks/use-warehouse-config"
+import { useUITranslations } from "@/hooks/use-warehouse-config"
 
 export default function Locations() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
   const highlights = warehouseConfig.locations.highlights
 
   const bgImageUrl = typeof bg2 === 'string' ? bg2 : bg2.src || bg2;
@@ -38,7 +41,7 @@ export default function Locations() {
         <div className="grid md:grid-cols-2 gap-12 items-stretch">
           {/* Left Column - Highlights */}
           <div className="flex flex-col">
-            <h2 className="md:text-xl text-lg font-bold mb-4 md:mb-8 text-[#173C65] font-['Libre_Baskerville',Georgia,serif] font-normal">Strategic Access Points</h2>
+            <h2 className="md:text-xl text-lg font-bold mb-4 md:mb-8 text-[#173C65] font-['Libre_Baskerville',Georgia,serif] font-normal">{t('locations.strategicAccessPoints')}</h2>
             <ul className="space-y-4 flex-grow">
               {highlights.map((highlight, index) => (
                 <li key={index} className="flex items-center gap-4 text-slate-700">

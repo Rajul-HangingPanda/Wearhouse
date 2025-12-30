@@ -1,12 +1,26 @@
 'use client';
 
 import Image from 'next/image';
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
+import { useUITranslations } from '@/hooks/use-warehouse-config';
+import { useLanguage } from '@/contexts/language-context';
 import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 import { logo } from '@/assets';
 
 export default function Footer() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
+  const { t: tNav } = useLanguage();
   const currentYear = new Date().getFullYear();
+  
+  const footerLinks = [
+    { key: 'home', label: tNav('nav.home') },
+    { key: 'locations', label: tNav('nav.locations') },
+    { key: 'features', label: tNav('nav.features') },
+    { key: 'specifications', label: tNav('nav.specifications') },
+    { key: 'gallery', label: tNav('nav.gallery') },
+    { key: 'contact', label: tNav('nav.contact') },
+  ];
 
   return (
     <footer className="bg-[var(--gray-dark)] text-white">
@@ -27,7 +41,7 @@ export default function Footer() {
             <p
               className="text-gray-300 text-sm leading-relaxed mb-4"
             >
-              Premium Class A industrial warehouse facilities in strategic locations across Mexico. Your partner for logistics excellence.
+              Instalaciones industriales Clase A en ubicaciones estratégicas en México. Tu socio para la excelencia logística.
             </p>
             <a
               href={`https://${warehouseConfig.brand.website}`}
@@ -45,19 +59,19 @@ export default function Footer() {
             <h4
               className="text-lg font-semibold mb-4"
             >
-              Quick Links
+              {t('footer.quickLinks')}
             </h4>
             <ul className="space-y-2">
-              {['Home', 'Locations', 'Features', 'Specifications', 'Gallery', 'Contact'].map((link) => (
-                <li key={link}>
+              {footerLinks.map((link) => (
+                <li key={link.key}>
                   <a
-                    href={`#${link.toLowerCase().replace(' ', '-')}`}
+                    href={`#${link.key}`}
                     className="text-sm text-gray-300 hover:text-white transition-colors"
                     style={{
                       fontFamily: 'Assistant, sans-serif',
                     }}
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -69,7 +83,7 @@ export default function Footer() {
             <h4
               className="text-lg font-semibold mb-4"
             >
-              Contact
+              {t('footer.contact')}
             </h4>
             <ul className="space-y-3">
               {warehouseConfig.contact?.phoneNumber && (
@@ -121,7 +135,7 @@ export default function Footer() {
             <h4
               className="text-lg font-semibold mb-4"
             >
-              Our Locations
+              {t('footer.ourLocations')}
             </h4>
             <ul className="space-y-2">
               {warehouseConfig.locations.addresses.map((location, index) => (
@@ -149,7 +163,7 @@ export default function Footer() {
             <h4
               className="text-sm text-center md:text-start font-semibold mb-3"
             >
-              Disclaimer
+              {t('footer.disclaimer')}
             </h4>
           <p
             className="text-xs text-gray-400 leading-relaxed"
@@ -194,7 +208,7 @@ export default function Footer() {
             <p
               className="text-sm text-gray-400 text-center md:text-right "
             >
-              © {currentYear} {warehouseConfig.brand.name}. All rights reserved.
+              © {currentYear} {warehouseConfig.brand.name}. Todos los derechos reservados.
             </p>
           </div>
         </div>

@@ -8,10 +8,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import {Building1, Building6, Buildingtwo, Building3, Building4,Building5 } from '@/assets';  
 import { Warehouse, Ruler, Building2, Layers } from 'lucide-react';
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
 import { bg2 } from '@/assets';
 
 export default function Apartments() {
+  const warehouseConfig = useWarehouseConfig();
   // Convert warehouse features to display cards
   const features = warehouseConfig.warehouseFeatures.features;
   const featureImages = [Building1, Building6, Buildingtwo, Building3, Building4,Building5];

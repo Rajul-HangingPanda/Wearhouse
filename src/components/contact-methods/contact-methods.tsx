@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
+import { useUITranslations } from '@/hooks/use-warehouse-config';
 import { bg2 } from '@/assets';
 
 export default function ContactMethods() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Format phone number for tel: link (remove spaces, dashes, etc.)
@@ -81,7 +84,7 @@ export default function ContactMethods() {
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full py-3 px-4 flex items-center justify-between font-['Assistant',sans-serif]"
         >
-          <span className="font-semibold text-gray-700 ">Contact Us</span>
+          <span className="font-semibold text-gray-700 ">{t('contact.contactUs')}</span>
           <svg
             className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
             fill="none"
@@ -168,12 +171,12 @@ export default function ContactMethods() {
             <h2
               className="text-xl   lg:text-2xl xl:text-3xl mb-3  md:mb-6 text-[#173C65] fw-bold font-libre  "
             >
-              Contact Us 
+              {t('contact.title')}
             </h2>
             <p
               className="md:text-xl text-base text-gray-600 max-w-xl mx-auto leading-relaxed font-['Assistant',sans-serif]"
             >
-              Choose your preferred method to contact us. We are here to help you find the perfect warehouse solution.
+              {t('contact.subtitle')}
             </p>
           </div>
 
@@ -201,12 +204,12 @@ export default function ContactMethods() {
                 <h3
                   className="text-lg font-bold mb-1 text-[#173C65] font-['Libre_Baskerville',Georgia,serif] font-normal"
                 >
-                  WhatsApp
+                  {t('contact.whatsapp')}
                 </h3>
                 <p
                   className="text-xs text-gray-600 text-center font-['Assistant',sans-serif]"
                 >
-                  Chat with us instantly
+                  {t('contact.chatWithUs')}
                 </p>
               </a>
             )}
@@ -238,7 +241,7 @@ export default function ContactMethods() {
                 <h3
                   className="text-lg font-bold mb-1 text-[#173C65] font-['Libre_Baskerville',Georgia,serif] font-normal"
                 >
-                  Call Us
+                  {t('contact.callUs')}
                 </h3>
                 <p
                   className="text-xs text-gray-600 text-center font-['Assistant',sans-serif]"

@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { warehouseConfig } from '@/config/warehouse-content';
 import { logo } from '@/assets';
+import { useLanguage } from '@/contexts/language-context';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -138,13 +140,18 @@ export default function Header() {
 
   // Navigation links - can be updated in config if needed
   const navLinks = [
-    'Home',
-    'Features',
-    'Locations',
-    'Specifications',
-    'Gallery',
-    'Contact',
+    { key: 'home', label: t('nav.home') },
+    { key: 'features', label: t('nav.features') },
+    { key: 'locations', label: t('nav.locations') },
+    { key: 'specifications', label: t('nav.specifications') },
+    { key: 'gallery', label: t('nav.gallery') },
+    { key: 'contact', label: t('nav.contact') },
   ];
+
+  // Toggle language function
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'es' : 'en');
+  };
   const formattedPhoneNumber = warehouseConfig.contact.phoneNumber.replace(/\s|-|\(|\)/g, '');
 
   return (
@@ -195,17 +202,19 @@ export default function Header() {
           </div>
 
           {/* Mobile: Call Now on the right */}
-          <a
-            href={`tel:${formattedPhoneNumber}`}
-            className="order-3 md:hidden inline-flex items-center justify-center text-sm font-semibold text-white bg-[#173C65] px-3 py-2 rounded-md shadow-sm"
-          >
-            Call Now
-          </a>
+          <div className="order-3 md:hidden flex items-center gap-2">
+            <a
+              href={`tel:${formattedPhoneNumber}`}
+              className="inline-flex items-center justify-center text-sm font-semibold text-white bg-[#173C65] px-3 py-2 rounded-md shadow-sm"
+            >
+              {t('header.callNow')}
+            </a>
+          </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-3 xl:gap-4 lg:order-2">
             {navLinks.map((link, index) => {
-              const linkId = link.toLowerCase().replace(' ', '-');
+              const linkId = link.key;
               const isActive = activeSection === linkId;
               
               return (
@@ -218,19 +227,28 @@ export default function Header() {
                       : 'text-(--dark) border-transparent hover:text-[#173C65]'
                   }`}
                 >
-                  {link}
+                  {link.label}
                 </a>
               );
             })}
           </div>
 
-          {/* Desktop: Call Now on the right */}
-          <a
-            href={`tel:${formattedPhoneNumber}`}
-            className="hidden lg:inline-flex items-center justify-center text-sm font-semibold text-white bg-[#173C65] px-4 py-2 rounded-md shadow-sm lg:order-3 ml-4"
-          >
-            Call Now
-          </a>
+          {/* Desktop: Language button and Call Now on the right */}
+          <div className="hidden lg:flex items-center gap-3 lg:order-3">
+            <button
+              onClick={toggleLanguage}
+              className="inline-flex items-center justify-center text-sm font-semibold text-[#173C65] bg-white border border-[#173C65] px-4 py-2 rounded-md shadow-sm hover:bg-[#EFF6FF] transition-colors"
+              aria-label="Toggle language"
+            >
+              {language === 'en' ? 'ES' : 'EN'}
+            </button>
+            <a
+              href={`tel:${formattedPhoneNumber}`}
+              className="inline-flex items-center justify-center text-sm font-semibold text-white bg-[#173C65] px-4 py-2 rounded-md shadow-sm"
+            >
+              {t('header.callNow')}
+            </a>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -238,7 +256,7 @@ export default function Header() {
           <div className="lg:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
             <div className="flex flex-col gap-4">
               {navLinks.map((link, index) => {
-                const linkId = link.toLowerCase().replace(' ', '-');
+                const linkId = link.key;
                 const isActive = activeSection === linkId;
                 
                 return (
@@ -252,10 +270,20 @@ export default function Header() {
                         : 'text-(--dark) border-transparent hover:text-[#173C65]'
                     }`}
                   >
-                    {link}
+                    {link.label}
                   </a>
                 );
               })}
+              {/* Language Switcher inside mobile menu */}
+              <div className="pt-2 border-t border-gray-200 w-1/3">
+                <button
+                  onClick={toggleLanguage}
+                  className="inline-flex items-center justify-center text-sm font-semibold text-[#173C65] bg-white border border-[#173C65] px-3 py-2 rounded-md shadow-sm hover:bg-[#EFF6FF] transition-colors w-full"
+                  aria-label="Toggle language"
+                >
+                  {language === 'en' ? 'ES' : 'EN'}
+                </button>
+              </div>
             </div>
           </div>
         )}

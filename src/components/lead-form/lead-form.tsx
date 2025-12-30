@@ -1,9 +1,12 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
+import { useUITranslations } from '@/hooks/use-warehouse-config';
 
 export default function LeadForm() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,15 +82,15 @@ export default function LeadForm() {
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
 
-    warehouseConfig.leadForm.fields.forEach((field) => {
+    warehouseConfig.leadForm.fields.forEach((field: typeof warehouseConfig.leadForm.fields[0]) => {
       if (field.required && !formData[field.name]?.trim()) {
-        newErrors[field.name] = `${field.label} is required`;
+        newErrors[field.name] = `${field.label} ${t('form.required')}`;
       }
       if (field.type === 'email' && formData[field.name] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData[field.name])) {
-        newErrors[field.name] = 'Please enter a valid email address';
+        newErrors[field.name] = t('form.invalidEmail');
       }
       if (field.type === 'tel' && formData[field.name] && !/^[\d\s\-\+\(\)]+$/.test(formData[field.name])) {
-        newErrors[field.name] = 'Please enter a valid phone number';
+        newErrors[field.name] = t('form.invalidPhone');
       }
     });
 
@@ -225,7 +228,7 @@ export default function LeadForm() {
             }`}
           >
             <option value="">Select {field.label}</option>
-            {field.options?.map((option) => (
+            {field.options?.map((option: string) => (
               <option key={option} value={option}>
                 {option}
               </option>
@@ -297,7 +300,7 @@ export default function LeadForm() {
             className="mb-6 p-4 rounded-lg border-2 border-green-500 bg-green-50 font-['Assistant',sans-serif]"
           >
             <p className="text-green-700 font-medium text-center">
-              ✅ Thank you! We've received your inquiry and will get back to you shortly.
+              {t('form.success')}
             </p>
           </div>
         )}
@@ -316,7 +319,7 @@ export default function LeadForm() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-5 md:p-6 lg:p-7">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-            {warehouseConfig.leadForm.fields.map((field) => {
+            {warehouseConfig.leadForm.fields.map((field: typeof warehouseConfig.leadForm.fields[0]) => {
               // Full-width fields (textarea and some others)
               if (field.type === 'textarea' || field.name === 'additionalNotes') {
                 return (
@@ -337,7 +340,7 @@ export default function LeadForm() {
               disabled={isSubmitting}
               className="px-5 py-2.5 cursor-pointer rounded-lg font-semibold text-sm transition-all duration-200 w-full sm:w-auto min-w-[150px] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 border-2 bg-white text-black border-[#173C65] font-['Assistant',sans-serif]"
             >
-              {isSubmitting ? 'Submitting...' : warehouseConfig.ctas.primary.text}
+              {isSubmitting ? t('form.submitting') : warehouseConfig.ctas.primary.text}
             </button>
 
           

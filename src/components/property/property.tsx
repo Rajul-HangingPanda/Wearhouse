@@ -3,9 +3,10 @@ import { useState } from "react";
 import { Check, CheckCircle2 } from "lucide-react";
 import { propertyImage, warehouseLayout, bg2 } from "@/assets";
 import Image from "next/image";
-import { warehouseConfig } from "@/config/warehouse-content";
+import { useWarehouseConfig } from "@/hooks/use-warehouse-config";
 
 export default function PropertySpecification() {
+  const warehouseConfig = useWarehouseConfig();
   const [activeTab, setActiveTab] = useState(
     warehouseConfig.specifications.tabs[0]?.id || "building"
   );

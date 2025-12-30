@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
 import { Package, Truck, Store, Factory, Pill, Car } from 'lucide-react';
 
 export default function IdealFor() {
+  const warehouseConfig = useWarehouseConfig();
   const industries = warehouseConfig.targetIndustries.industries;
 
   const iconMap: Record<string, React.ReactElement> = {

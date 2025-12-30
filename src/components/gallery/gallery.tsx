@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { useUITranslations } from '@/hooks/use-warehouse-config';
 import { 
   warehouseIndustrial, 
   warehouseShot1, 
@@ -25,6 +26,7 @@ type GalleryItem = {
 };
 
 export default function Gallery() {
+  const t = useUITranslations();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
@@ -144,12 +146,12 @@ export default function Gallery() {
             <h2
               className="text-xl   lg:text-2xl xl:text-3xl  md:mb-6 mb-0 py-6 text-[#173C65] fw-bold font-libre"
             >
-              Gallery
+              {t('gallery.title')}
             </h2>
             <p
               className="text-sm md:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed font-['Assistant',sans-serif]"
             >
-              Explore our state-of-the-art warehouse facilities through our photo and video gallery. See the quality and features that make our spaces ideal for your operations.
+              {t('gallery.subtitle')}
             </p>
           </div>
 

@@ -1,20 +1,23 @@
 'use client';
 
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
+import { useUITranslations } from '@/hooks/use-warehouse-config';
 
 export default function CTASection() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-white" id="cta-section">
       <div className="container xl:max-w-7xl w-[94%] mx-auto">
         <div className="text-center">
           {/* Heading */}
           <h2 className="text-xl lg:text-2xl xl:text-3xl mb-3 md:mb-6 text-[#173C65] font-bold font-['Libre_Baskerville',Georgia,serif]">
-            Ready to Get Started?
+            {t('cta.title')}
           </h2>
           
           {/* Subtitle */}
           <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed font-['Assistant',sans-serif]">
-            Explore our Class A warehouse facilities and discover how we can support your business operations.
+            {t('cta.subtitle')}
           </p>
 
           {/* CTA Button */}

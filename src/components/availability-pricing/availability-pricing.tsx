@@ -1,9 +1,12 @@
 "use client";
 
-import { warehouseConfig } from "@/config/warehouse-content";
+import { useWarehouseConfig } from "@/hooks/use-warehouse-config";
+import { useUITranslations } from "@/hooks/use-warehouse-config";
 import { CheckCircle2, Calendar, DollarSign, FileText } from "lucide-react";
 
 export default function AvailabilityPricing() {
+  const warehouseConfig = useWarehouseConfig();
+  const t = useUITranslations();
   const availability = warehouseConfig.availability;
 
   return (
@@ -12,11 +15,10 @@ export default function AvailabilityPricing() {
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-xl   lg:text-2xl xl:text-3xl mb-3  md:mb-6 text-[#173C65] fw-bold font-libre ">
-            Availability & Pricing
+            {t('availability.title')}
           </h2>
           <p className="text-sm  md:text-base text-gray-600 md:max-w-3xl w-[94%] mx-auto leading-relaxed font-['Assistant',sans-serif]">
-            Ready to move in immediately. Flexible pricing options to suit your
-            business needs.
+            {t('availability.subtitle')}
           </p>
         </div>
 
@@ -92,7 +94,7 @@ export default function AvailabilityPricing() {
                   fontWeight: 400,
                 }}
               >
-                Lease Terms
+                {t('availability.leaseTerms')}
               </h3>
               <p
                 className="text-sm text-gray-600 flex-grow"
@@ -120,17 +122,17 @@ export default function AvailabilityPricing() {
                   fontWeight: 400,
                 }}
               >
-                Get Quote
+                {t('availability.getQuote')}
               </h3>
               <a
                 href="#contact"
-                className="px-6 py-2 rounded-lg font-semibold text-sm font-['Assistant',sans-serif]
-             border-2 border-[#173C65] bg-white text-black text-nowrap
+                className="px-6 py-2 rounded-lg text-wrap font-semibold text-sm font-['Assistant',sans-serif]
+             border-2 border-[#173C65] bg-white text-black text-center
              transition-all duration-300
              hover:bg-[#173C65] hover:text-white
              hover:-translate-y-1 hover:shadow-lg"
               >
-                Contact Us
+                {t('availability.contactUs')}
               </a>
             </div>
           </div>

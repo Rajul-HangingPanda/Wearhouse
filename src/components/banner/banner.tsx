@@ -8,9 +8,10 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 import { banner1, banner2, bg1, warehouseShot1, warehouseShot2, warehouseShot3 } from '@/assets';
-import { warehouseConfig } from '@/config/warehouse-content';
+import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
 
 export default function Banner() {
+  const warehouseConfig = useWarehouseConfig();
   // Use warehouse images - can be easily changed in config
   // Default to warehouse images, fallback to original banners if needed
   const warehouseImages = [warehouseShot1, warehouseShot2, warehouseShot3].filter(Boolean);
