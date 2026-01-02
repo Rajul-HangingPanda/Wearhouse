@@ -5,21 +5,23 @@ import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
 import { Package, Truck, Store, Factory, Pill, Car } from 'lucide-react';
 
 type Industry = {
-  name: string;
-  description: string;
+  id: 'ecommerce' | 'logistics' | 'retail' | 'manufacturing' | 'pharma' | 'automotive';
+  name: string;        // translated label
+  description: string; // translated description
 };
+
 
 export default function IdealFor() {
   const warehouseConfig = useWarehouseConfig();
   const industries = warehouseConfig.targetIndustries.industries;
 
-  const iconMap: Record<string, React.ReactElement> = {
-    'E-commerce': <Package className="w-8 h-8" />,
-    'Logistics & Distribution': <Truck className="w-8 h-8" />,
-    'Retail Supply Chain': <Store className="w-8 h-8" />,
-    'Manufacturing': <Factory className="w-8 h-8" />,
-    'Pharmaceutical': <Pill className="w-8 h-8" />,
-    'Automotive': <Car className="w-8 h-8" />,
+  const iconMap: Record<Industry['id'], React.ReactElement> = {
+    'ecommerce': <Package className="w-8 h-8" />,
+    'logistics': <Truck className="w-8 h-8" />,
+    'retail': <Store className="w-8 h-8" />,
+    'manufacturing': <Factory className="w-8 h-8" />,
+    'pharma': <Pill className="w-8 h-8" />,
+    'automotive': <Car className="w-8 h-8" />,
   };
 
   return (
@@ -54,7 +56,7 @@ export default function IdealFor() {
                       className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 transition-transform bg-[#EFF6FF] text-[#173C65] duration-300 hover:scale-110"
     
                     >
-                      {iconMap[industry.name] || <Package className="w-8 h-8" />}
+                      {iconMap[industry.id] || <Package className="w-8 h-8" />}
                     </div>
                     <div className="flex-1">
                       <h3
@@ -82,7 +84,7 @@ export default function IdealFor() {
                       className="w-16 h-16 bg-[#EFF6FF] text-[#173C65] rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
                       
                     >
-                      {iconMap[industry.name] || <Package className="w-8 h-8" />}
+                      {iconMap[industry.id] || <Package className="w-8 h-8" />}
                     </div>
                     <div className="flex-1">
                       <h3

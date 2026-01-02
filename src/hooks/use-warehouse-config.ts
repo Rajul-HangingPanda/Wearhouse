@@ -142,26 +142,32 @@ const spanishTranslations: any = {
     subtitle: "Perfecto para diversas operaciones industriales y logísticas",
     industries: [
       {
+        id: "ecommerce",
         name: "Comercio Electrónico",
         description: "Centros de cumplimiento y distribución de última milla",
       },
       {
+        id: "logistics",
         name: "Logística y Distribución",
         description: "3PL, servicios de mensajería y paquetería",
       },
       {
+        id: "retail",
         name: "Cadena de Suministro Minorista",
         description: "Minoristas y distribución de bienes de consumo rápido",
       },
       {
+        id: "manufacturing",
         name: "Manufactura",
         description: "Manufactura ligera y ensamblaje",
       },
       {
+        id: "pharma",
         name: "Farmacéutico",
         description: "Distribución y almacenamiento farmacéutico",
       },
       {
+        id: "automotive",
         name: "Automotriz",
         description: "Piezas y componentes automotrices",
       },

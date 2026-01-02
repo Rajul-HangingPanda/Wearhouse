@@ -158,26 +158,32 @@ export const warehouseConfig = {
     subtitle: "Perfect for various industrial and logistics operations",
     industries: [
       {
+        id: "ecommerce",
         name: "E-commerce",
         description: "Fulfillment centers and last-mile distribution",
       },
       {
+        id: "logistics",
         name: "Logistics & Distribution",
         description: "3PL, Courier and parcel services",
       },
       {
+        id: "retail",
         name: "Retail Supply Chain",
         description: "Retailers and FMCG distribution",
       },
       {
+        id: "manufacturing",
         name: "Manufacturing",
         description: "Light manufacturing and assembly",
       },
       {
+        id: "pharma",
         name: "Pharmaceutical",
         description: "Pharma distribution and storage",
       },
       {
+        id: "automotive",
         name: "Automotive",
         description: "Automotive parts and components",
       },
