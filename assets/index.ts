@@ -40,7 +40,7 @@ import warehouseDrone from './warehouse/drone.png';
 import warehouseLayout from './warehouse/layout.png';
 import warehouseArea from './warehouse/area.png';
 import warehouseNewmark from './warehouse/newmark.png';
-import warehouseLoc1 from './warehouse/loc1.png';
+import warehouseLoc1 from './warehouse/loc1.jpeg';
 import warehouseLoc2 from './warehouse/loc2.png';
 import warehouseLoc3 from './warehouse/loc3.png';
 import warehouseLoc4 from './warehouse/loc4.png';

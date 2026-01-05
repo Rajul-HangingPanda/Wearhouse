@@ -201,8 +201,8 @@ export const warehouseConfig = {
 
   // Contact Information
   contact: {
-    phoneNumber: "+52 55 1234 5678", // Add actual phone number
-    email: "info@newmark.com", // Add actual email
+    phoneNumber: "+525518497483", // Add actual phone number
+    email: "guillermo.garrido@nmrk.com", // Add actual email
   },
 
   // Call to Actions
@@ -217,7 +217,7 @@ export const warehouseConfig = {
     },
     whatsapp: {
       text: "Contact via WhatsApp",
-      link: "https://wa.me/525512345678", // Format: https://wa.me/[country code][phone number without + or spaces]
+      link: "https://wa.me/+525518497483", // Format: https://wa.me/[country code][phone number without + or spaces]
     },
     download: {
       text: "Download Brochure",

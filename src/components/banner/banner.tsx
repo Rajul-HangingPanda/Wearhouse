@@ -26,12 +26,17 @@ export default function Banner() {
       id="home"
     >
       {/* Background Image with Opacity */}
-      <div
-        className="absolute inset-0 bg-no-repeat bg-bottom bg-cover opacity-[0.15] z-0"
-        style={{
-          backgroundImage: `url(${bgImageUrl})`,
-        }}
-      />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+  <Image
+    src={bg1}
+    alt=""
+    fill
+    sizes="100vw"
+    className="object-cover object-bottom opacity-[0.15]"
+    priority={false}
+  />
+</div>
+
       <div className="text-block relative  xl:max-w-7xl  w-[94%]  mx-auto z-10">
         <div className=" ">
           <div className="row flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 lg:mt-10">
@@ -84,15 +89,18 @@ export default function Banner() {
                     }
                   >
                     {banners.map((banner, index) => (
-                      <SwiperSlide key={index} className="md:h-[450px] h-[350px] ">
-                        <Image
-                          src={banner}
-                          alt={warehouseConfig.banner.title}
-                          width={800}
-                          height={450}
-                          className="w-full md:h-[450px] h-[350px] object-cover transition-opacity duration-500 rounded-[6px_6px_6px_50px]"
-                          priority={index === 0}
-                        />
+                        <SwiperSlide key={index} className="md:h-[450px] h-[350px] ">
+                          <Image
+                            src={banner}
+                            alt={warehouseConfig.banner.title}
+                            width={800}
+                            height={450}
+                            className="w-full md:h-[450px] h-[350px] object-cover transition-opacity duration-500 rounded-[6px_6px_6px_50px]"
+                            priority={index === 0}
+                            loading="eager"
+                            fetchPriority="high"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                          />
                
                       </SwiperSlide>
                       
