@@ -1,4 +1,4 @@
-import UAParser from "ua-parser-js";
+import { UAParser } from 'ua-parser-js';
 
 export type UAParsed = {
   browser: { name: string; version: string };
