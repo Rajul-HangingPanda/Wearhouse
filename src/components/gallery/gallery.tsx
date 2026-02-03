@@ -1,19 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
 import { useUITranslations } from '@/hooks/use-warehouse-config';
 import { trackButtonClick } from '@/utils/button-tracking';
-import {
-  warehouseIndustrial,
-  warehouseShot1,
-  warehouseShot2,
-  warehouseShot3,
-  warehouseShot4,
-  bg2,
-  warehouseLayout,
-} from '@/assets';
+import { galleryImages, bg2 } from '@/assets';
+
+// --- Previously used assets (commented out – uncomment and use galleryItemsOld if needed) ---
+// import {
+//   warehouseIndustrial,
+//   warehouseShot1,
+//   warehouseShot2,
+//   warehouseShot3,
+//   warehouseShot4,
+//   warehouseLayout,
+// } from '@/assets';
 
 type GalleryItem = {
   src: StaticImageData | string;
@@ -23,16 +25,28 @@ type GalleryItem = {
 export default function Gallery() {
   const t = useUITranslations();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  // Avoid hydration mismatch: render gallery only after mount (server may have cached old HTML)
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
-  // Mix images and videos together
-  const galleryItems: GalleryItem[] = [
-    { src: warehouseIndustrial, alt: 'Industrial warehouse exterior' },
-    { src: warehouseShot1, alt: 'Warehouse interior shot 1' },
-    { src: warehouseShot2, alt: 'Warehouse interior shot 2' },
-    { src: warehouseShot3, alt: 'Warehouse interior shot 3' },
-    { src: warehouseShot4, alt: 'Warehouse interior shot 4' },
-    { src: warehouseLayout, alt: 'Warehouse floor plan layout' },
-  ];
+  // Gallery items from assets/gallery images array
+  const galleryItems: GalleryItem[] = galleryImages.map((src, index) => ({
+    src,
+    alt: `Warehouse gallery image ${index + 1}`,
+  }));
+
+  // --- Previous gallery items (commented out – uncomment to use old images) ---
+  // const galleryItemsOld: GalleryItem[] = [
+  //   { src: warehouseIndustrial, alt: 'Industrial warehouse exterior' },
+  //   { src: warehouseShot1, alt: 'Warehouse interior shot 1' },
+  //   { src: warehouseShot2, alt: 'Warehouse interior shot 2' },
+  //   { src: warehouseShot3, alt: 'Warehouse interior shot 3' },
+  //   { src: warehouseShot4, alt: 'Warehouse interior shot 4' },
+  //   { src: warehouseLayout, alt: 'Warehouse floor plan layout' },
+  // ];
 
   const openModal = (index: number) => {
     trackButtonClick(`gallery-image-${index}`);
@@ -89,13 +103,18 @@ export default function Gallery() {
             </p>
           </div>
 
-          {/* Gallery Masonry Grid */}
-          {galleryItems.length > 0 ? (
-            <div className="xl:w-[88%] w-[95%] max-w-[1300px] mx-auto px-2  lg:px-2">
-              <div 
-                className="grid gap-1 lg:gap-1.5 grid-cols-2 md:grid-cols-3 xl:grid-cols-6 auto-rows-[minmax(150px,auto)] md:auto-rows-[minmax(250px,auto)]"
-              >
-                {galleryItems.map((item, index) => (
+          {/* Gallery Masonry Grid - single wrapper so server/client match; content after mount to avoid hydration mismatch */}
+          <div className="xl:w-[88%] w-[95%] max-w-[1300px] mx-auto px-2 lg:px-2">
+            <div
+              className="grid gap-1 lg:gap-1.5 grid-cols-2 md:grid-cols-3 xl:grid-cols-6 auto-rows-[minmax(150px,auto)] md:auto-rows-[minmax(250px,auto)]"
+              suppressHydrationWarning
+            >
+              {!mounted ? (
+                Array.from({ length: 12 }).map((_, i) => (
+                  <div key={i} className="relative rounded-lg overflow-hidden bg-gray-200 animate-pulse" style={{ aspectRatio: '1' }} />
+                ))
+              ) : galleryItems.length > 0 ? (
+                galleryItems.map((item, index) => (
                   <div
                     key={index}
                     className="relative rounded-lg overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-all duration-300 bg-gray-100"
@@ -127,14 +146,15 @@ export default function Gallery() {
                       </svg>
                     </div>
                   </div>
-                ))}
+                ))
+              ) : null}
+            </div>
+            {mounted && galleryItems.length === 0 && (
+              <div className="text-center text-gray-500 py-12">
+                <p>No images available</p>
               </div>
-            </div>
-          ) : (
-            <div className="text-center text-gray-500 py-12">
-              <p>No images available</p>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
 
