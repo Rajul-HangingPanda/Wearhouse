@@ -4,7 +4,7 @@
 export const warehouseConfig = {
   // Brand Information
   brand: {
-    name: "NEWMARK",
+    name: "Tlalnepantla Warehouse",
     logo: "/warehouse/newmark.png", // Update path when logo is available
     website: "www.nmrk.com",
   },
@@ -12,8 +12,10 @@ export const warehouseConfig = {
   // Banner/Hero Section
   banner: {
     title: "Industrial Warehouse for Lease in Tlalnepantla",
-    subtitle: "Strategic location for logistics, distribution, and last-mile operations in Mexico City",
-    description: "Introducing one of the most attractive new industrial developments in Tlalnepantla—a Class A distribution facility strategically located in the highly demanded Barrientos submarket, the epicenter of logistics, e-commerce, transportation, and last-mile delivery for Mexico City and the entire Metro Area.",
+    subtitle:
+      "Strategic location for logistics, distribution, and last-mile operations in Mexico City",
+    description:
+      "Introducing one of the most attractive new industrial developments in Tlalnepantla—a Class A distribution facility strategically located in the highly demanded Barrientos submarket, the epicenter of logistics, e-commerce, transportation, and last-mile delivery for Mexico City and the entire Metro Area.",
     ctaText: "Book a Tour",
     ctaLink: "#contact",
     // Images will be imported from assets - use empty array to use fallback
@@ -24,8 +26,9 @@ export const warehouseConfig = {
   // Warehouse Features
   warehouseFeatures: {
     title: "Spaces designed for high-performance logistics operations",
-    subtitle: "The property features industrial specifications that enable efficient, secure, and flexible operations, making it well suited for e-commerce, distribution centers, courier services,parcel delivery, and last-mile logistics",
-    
+    subtitle:
+      "The property features industrial specifications that enable efficient, secure, and flexible operations, making it well suited for e-commerce, distribution centers, courier services,parcel delivery, and last-mile logistics",
+
     features: [
       {
         label: "Minimum clear height",
@@ -103,11 +106,13 @@ export const warehouseConfig = {
       "Cuautitlan-Tultitlan-Tepotzotlan industrial submarkets",
       "Key logistics and industrial hubs in the northern Metro region",
     ],
-    description: "This warehouse combines location, infrastructure, and flexibility, offering an ideal platform for companies seeking operational efficiency within Mexico’s largest consumer market",
+    description:
+      "This warehouse combines location, infrastructure, and flexibility, offering an ideal platform for companies seeking operational efficiency within Mexico’s largest consumer market",
     addresses: [
       {
         name: "Tlalnepantla Warehouse",
-        address: "Avenida Prolongación Hidalgo No.3, Col. Pueblo San Pedro Barrientos, Municipio Tlalnepantla De Baez, Edo. De México, C.P. 54010",
+        address:
+          "Avenida Prolongación Hidalgo No.3, Col. Pueblo San Pedro Barrientos, Municipio Tlalnepantla De Baez, Edo. De México, C.P. 54010",
         mapLink: "https://maps.app.goo.gl/mgj6YRcikX8zeznC8",
         usps: [
           "Prime infill location with immediate access to Mexico City's strongest consumer and labor markets",
@@ -124,14 +129,14 @@ export const warehouseConfig = {
           "Light manufacturing",
         ],
       },
-     
     ],
   },
 
   // Specifications
   specifications: {
     title: "Warehouse Specifications",
-    subtitle: "World-class construction features for exceptional operational efficiency",
+    subtitle:
+      "World-class construction features for exceptional operational efficiency",
     tabs: [
       {
         id: "building",
@@ -241,9 +246,10 @@ export const warehouseConfig = {
 
   // Contact Information
   contact: {
-    phoneNumber: "+525518497483", // Add actual phone number
+    phoneNumber: "+52 55 18 49 7483", // Add actual phone number
     email: "guillermo.garrido@nmrk.com", // Add actual email
   },
+
 
   // Call to Actions
   ctas: {
@@ -271,15 +277,46 @@ export const warehouseConfig = {
     subtitle: "Fill out the form below and we'll get back to you",
     fields: [
       { name: "fullName", label: "Full Name", type: "text", required: true },
-      { name: "companyName", label: "Company Name", type: "text", required: true },
+      {
+        name: "companyName",
+        label: "Company Name",
+        type: "text",
+        required: true,
+      },
       { name: "phone", label: "Phone Number", type: "tel", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "warehouseSize", label: "Warehouse Size Requirement", type: "text", required: false },
-      { name: "preferredLocation", label: "Preferred Location", type: "select", options: ["Tlalnepantla", "Jilotepec", "Both"], required: false },
+      {
+        name: "warehouseSize",
+        label: "Warehouse Size Requirement",
+        type: "text",
+        required: false,
+      },
+      {
+        name: "preferredLocation",
+        label: "Preferred Location",
+        type: "select",
+        options: ["Tlalnepantla", "Jilotepec", "Both"],
+        required: false,
+      },
       { name: "budget", label: "Budget", type: "text", required: false },
-      { name: "leaseDuration", label: "Lease Duration", type: "text", required: false },
-      { name: "timeline", label: "Timeline to Move In", type: "text", required: false },
-      { name: "additionalNotes", label: "Additional Notes", type: "textarea", required: false },
+      {
+        name: "leaseDuration",
+        label: "Lease Duration",
+        type: "text",
+        required: false,
+      },
+      {
+        name: "timeline",
+        label: "Timeline to Move In",
+        type: "text",
+        required: false,
+      },
+      {
+        name: "additionalNotes",
+        label: "Additional Notes",
+        type: "textarea",
+        required: false,
+      },
     ],
   },
 
@@ -292,12 +329,12 @@ export const warehouseConfig = {
   ],
 
   // Legal/Disclaimer
-  disclaimer: "This information has been prepared by Newmark for general information only. Newmark makes no warranties nor representations of any kind, express or implied, with respect to the information, including, but not limited to, warranties of content, accuracy, and reliability. Any interested party should make their own inquiries about the accuracy of the information. Newmark unequivocally excludes all inferred or implied terms, conditions and warranties arising from this document and excludes all liability for loss and damage arising therefrom.",
-  
+  disclaimer:
+    "This document has been prepared for general informational purposes only. No warranties or representations of any kind, whether express or implied, are made with respect to the information contained herein, including, without limitation, its content, accuracy, or reliability. Any interested party should conduct its own independent investigation and verification of the information. All inferred or implied terms, conditions, and warranties arising from this document are expressly excluded, as is any liability for loss or damage arising from its use. The information contained herein is subject to change without prior notice.",
+
   // Legal Pages
   legal: {
     privacyPolicyUrl: "/privacy-policy", // Update with actual URL
     termsConditionsUrl: "/terms-conditions", // Update with actual URL
   },
 };
-

@@ -6,6 +6,7 @@ import { warehouseConfig } from '@/config/warehouse-content';
 import { logo } from '@/assets';
 import { useLanguage } from '@/contexts/language-context';
 import { trackButtonClick } from '@/utils/button-tracking';
+import { Logo } from '../logo/Logo';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -249,7 +250,7 @@ export default function Header() {
 
           {/* Logo - centered on mobile, left on tablet/desktop */}
           <div className="order-2 md:order-1 lg:order-1 flex-1 flex justify-center md:flex-none md:justify-start">
-            <Image
+            {/* <Image
               src={logo}
               alt="NEWMARK Logo"
               width={180}
@@ -258,7 +259,8 @@ export default function Header() {
               priority
               quality={90}
               sizes="180px"
-            />
+            /> */}
+            <Logo/>
           </div>
 
           {/* Mobile: Language switcher and Call Now on the right */}

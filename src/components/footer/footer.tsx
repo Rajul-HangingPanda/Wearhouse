@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useWarehouseConfig } from '@/hooks/use-warehouse-config';
-import { useUITranslations } from '@/hooks/use-warehouse-config';
-import { useLanguage } from '@/contexts/language-context';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
-import { logo } from '@/assets';
-import { trackButtonClick } from '@/utils/button-tracking';
+import { useWarehouseConfig } from "@/hooks/use-warehouse-config";
+import { useUITranslations } from "@/hooks/use-warehouse-config";
+import { useLanguage } from "@/contexts/language-context";
+import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { logo } from "@/assets";
+import { trackButtonClick } from "@/utils/button-tracking";
+import { Logo } from "../logo/Logo";
 
 export default function Footer() {
   const warehouseConfig = useWarehouseConfig();
   const t = useUITranslations();
   const { t: tNav } = useLanguage();
   const currentYear = new Date().getFullYear();
-  
+
   const footerLinks = [
-    { key: 'home', label: tNav('nav.home') },
-    { key: 'locations', label: tNav('nav.locations') },
-    { key: 'features', label: tNav('nav.features') },
-    { key: 'specifications', label: tNav('nav.specifications') },
-    { key: 'gallery', label: tNav('nav.gallery') },
-    { key: 'contact', label: tNav('nav.contact') },
+    { key: "home", label: tNav("nav.home") },
+    { key: "locations", label: tNav("nav.locations") },
+    { key: "features", label: tNav("nav.features") },
+    { key: "specifications", label: tNav("nav.specifications") },
+    { key: "gallery", label: tNav("nav.gallery") },
+    { key: "contact", label: tNav("nav.contact") },
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <Image
+              {/* <Image
                 src={logo}
                 alt="NEWMARK Logo"
                 width={150}
@@ -40,18 +40,18 @@ export default function Footer() {
                 loading="lazy"
                 quality={85}
                 sizes="150px"
-              />
+              /> */}
+              <Logo variant="light"/>
             </div>
-            <p
-              className="text-gray-300 text-sm leading-relaxed mb-4"
-            >
-              Instalaciones industriales Clase A en ubicaciones estratégicas en México. Tu socio para la excelencia logística.
+            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+              Instalaciones industriales Clase A en ubicaciones estratégicas en
+              México. Tu socio para la excelencia logística.
             </p>
             <a
               href={`https://${warehouseConfig.brand.website}`}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackButtonClick('footer-website-link')}
+              onClick={() => trackButtonClick("footer-website-link")}
               className="text-sm text-gray-300 hover:text-white transition-colors inline-flex items-center gap-1"
             >
               <span>{warehouseConfig.brand.website}</span>
@@ -61,10 +61,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4
-              className="text-lg font-semibold mb-4"
-            >
-              {t('footer.quickLinks')}
+            <h4 className="text-lg font-semibold mb-4">
+              {t("footer.quickLinks")}
             </h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
@@ -74,7 +72,7 @@ export default function Footer() {
                     onClick={() => trackButtonClick(`footer-nav-${link.key}`)}
                     className="text-sm text-gray-300 hover:text-white transition-colors"
                     style={{
-                      fontFamily: 'Assistant, sans-serif',
+                      fontFamily: "Assistant, sans-serif",
                     }}
                   >
                     {link.label}
@@ -86,12 +84,10 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4
-              className="text-lg font-semibold mb-4"
-            >
-              {t('footer.contact')}
+            <h4 className="text-lg font-semibold mb-4">
+              {t("footer.contact")}
             </h4>
-            <ul className="space-y-3">
+            {/* <ul className="space-y-3">
               {warehouseConfig.contact?.phoneNumber && (
                 <li className="flex items-start gap-3">
                   <Phone className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
@@ -135,49 +131,76 @@ export default function Footer() {
                   </span>
                 </li>
               )}
-            </ul>
+            </ul> */}
+            <div className="">
+              <p className="text-sm text-gray-300 mb-4 italic"></p>
+              <div className="flex flex-col gap-6 text-sm text-gray-300">
+                {/* Jorge Fabris */}
+                <div>
+                  <p className="font-semibold text-white">Jorge Fabris</p>
+                  <p>Executive Managing Director | Industrial</p>
+                  <p className="text-blue-300">jorge.fabris@nmrk.com</p>
+                  <p>+52.55.39.89.1639</p>{" "}
+                </div>{" "}
+                {/* Guillermo Garrido */}{" "}
+                <div>
+                  {" "}
+                  <p className="font-semibold text-white">
+                    Guillermo Garrido
+                  </p>{" "}
+                  <p>Executive Managing Director | Industrial</p>{" "}
+                  <p className="text-blue-300">guillermo.garrido@nmrk.com</p>{" "}
+                  <p>+52.55.18.49.7483</p>{" "}
+                </div>{" "}
+              </div>{" "}
+            </div>
           </div>
 
           {/* Locations */}
           <div>
-            <h4
-              className="text-lg font-semibold mb-4"
-            >
-              {t('footer.ourLocations')}
+            <h4 className="text-lg font-semibold mb-4">
+              {t("footer.ourLocations")}
             </h4>
             <ul className="space-y-2">
-              {warehouseConfig.locations.addresses.map((location: { name: string; mapLink: string }, index: number) => (
-                <li key={index}>
-                  <a
-                    href={location.mapLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackButtonClick(`footer-location-${index}-${location.name.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="text-sm text-gray-300 hover:text-white transition-colors inline-flex items-center gap-1"
-                    style={{
-                      fontFamily: 'Assistant, sans-serif',
-                    }}
-                  >
-                    <span>{location.name}</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </li>
-              ))}
+              {warehouseConfig.locations.addresses.map(
+                (
+                  location: { name: string; mapLink: string },
+                  index: number,
+                ) => (
+                  <li key={index}>
+                    <a
+                      href={location.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackButtonClick(
+                          `footer-location-${index}-${location.name.toLowerCase().replace(/\s+/g, "-")}`,
+                        )
+                      }
+                      className="text-sm text-gray-300 hover:text-white transition-colors inline-flex items-center gap-1"
+                      style={{
+                        fontFamily: "Assistant, sans-serif",
+                      }}
+                    >
+                      <span>{location.name}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
         </div>
 
         {/* Disclaimer Section */}
         <div className="border-t border-gray-700 pt-8 mb-8">
-            <h4
-              className="text-sm text-center md:text-start font-semibold mb-3"
-            >
-              {t('footer.disclaimer')}
-            </h4>
+          <h4 className="text-sm text-center md:text-start font-semibold mb-3">
+            {t("footer.disclaimer")}
+          </h4>
           <p
             className="text-xs text-gray-400 leading-relaxed"
             style={{
-              fontFamily: 'Assistant, sans-serif',
+              fontFamily: "Assistant, sans-serif",
             }}
           >
             {warehouseConfig.disclaimer}
@@ -214,10 +237,9 @@ export default function Footer() {
                 </>
               )}
             </div> */}
-            <p
-              className="text-sm text-gray-400 text-center md:text-right "
-            >
-              © {currentYear} {warehouseConfig.brand.name}. Todos los derechos reservados.
+            <p className="text-sm text-gray-400 text-center md:text-right ">
+              © {currentYear} {warehouseConfig.brand.name}. Todos los derechos
+              reservados.
             </p>
           </div>
         </div>
@@ -225,4 +247,3 @@ export default function Footer() {
     </footer>
   );
 }
-
