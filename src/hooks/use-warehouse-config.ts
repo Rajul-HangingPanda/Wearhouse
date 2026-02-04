@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useMemo } from 'react';
@@ -7,52 +8,80 @@ import { useLanguage } from '@/contexts/language-context';
 // Spanish translations for warehouseConfig
 const spanishTranslations: any = {
   banner: {
-    title: "NUEVA NAVE INDUSTRIAL CLASE A EN RENTA",
-    subtitle: "Ubicación estratégica para operaciones logísticas y de última milla",
+    title: "Nave Industrial en Renta en Tlalnepantla",
+    subtitle: "Ubicación estratégica para logística, distribución y última milla en la CDMX",
     description: "Presentamos uno de los desarrollos industriales más atractivos en Tlalnepantla: una nave de distribución Clase A estratégicamente ubicada en el altamente demandado submercado Tlalnepantla, epicentro de logística, e-commerce, transporte y entregas de última milla para la Ciudad de México y toda el Área Metropolitana.",
     ctaText: "Agenda un Recorrido",
     ctaLink: "#contact",
   },
   warehouseFeatures: {
-    title: "Características Clave del Edificio",
-    subtitle: "Especificaciones Clase \"A\"",
+    title: "Espacios diseñados para operaciones logísticas de alto desempeño",
+    subtitle: "La propiedad cuenta con especificaciones constructivas que permiten una operación eficiente, segura y flexible, ideal para e-commerce, centros de distribución, mensajería, paquetería y logística de última milla",
     features: [
       {
-        label: "Área del Sitio",
-        value: "9,791 m²",
-        icon: "area",
-      },
-      {
-        label: "Área Total Arrendable",
-        value: "7,390 m²",
-        icon: "rentable",
-      },
-      {
-        label: "Área de Almacén",
-        value: "6,590 m²",
-        icon: "warehouse",
-      },
-      {
-        label: "Mezzanine",
-        value: "800 m²",
-        description: "Ideal para oficinas o crecimiento operativo",
-        icon: "mezzanine",
-      },
-      {
-        label: "Altura Libre",
-        value: "11.0 m",
+        label: "Altura libre mínima",
+        value: "11.00 m",
         icon: "height",
       },
       {
-        label: "Espaciado de Columnas",
-        value: "12 × 24 m",
-        description: "Óptimo para estanterías y maniobras internas",
+        label: "Configuración Front-Dock",
+        value: "Sí",
+        icon: "warehouse",
+      },
+      {
+        label: "Andenes de carga",
+        value: "4 con rampas niveladoras",
+        icon: "warehouse",
+      },
+      {
+        label: "Accesos a nivel de piso",
+        value: "2",
+        icon: "warehouse",
+      },
+      {
+        label: "Distancia entre columnas",
+        value: "10 m × 28 m",
         icon: "spacing",
+      },
+      {
+        label: "Techumbre",
+        value: "Lámina y colchoneta termoacústica",
+        icon: "mezzanine",
+      },
+      {
+        label: "Muros",
+        value: "Block y lámina",
+        icon: "area",
+      },
+      {
+        label: "Altura en sótanos",
+        value: "4.80 m",
+        icon: "mezzanine",
+      },
+      {
+        label: "Oficinas integradas",
+        value: "Sí",
+        icon: "rentable",
+      },
+      {
+        label: "Transformador",
+        value: "300 KVA",
+        icon: "area",
+      },
+      {
+        label: "Estacionamiento",
+        value: "28 vehículos",
+        icon: "area",
+      },
+      {
+        label: "Sistema contra incendio",
+        value: "Con extintores",
+        icon: "area",
       },
     ],
   },
   locations: {
-    title: "Ubicación Estratégica Privilegiada",
+    title: "La ubicación que tu operación necesita",
     subtitle: "Acceso directo y eficiente a las principales zonas industriales",
     highlights: [
       "Ciudad de México",
@@ -63,7 +92,7 @@ const spanishTranslations: any = {
       "Submercados industriales Cuautitlán–Tultitlán–Tepotzotlán",
       "Principales centros logísticos e industriales del norte del Valle de México",
     ],
-    description: "Esta área es una de las zonas logísticas más consolidadas y demandadas del país, con niveles de desocupación extremadamente bajos y una ubicación privilegiada para distribución urbana.",
+    description: "Ubicada en Tlalnepantla, Estado de México, esta nave industrial se encuentra dentro de uno de los corredores logísticos más consolidados de la Zona Metropolitana de la Ciudad de éxico. Su conectividad inmediata con Periférico Norte, Gustavo Baz, Av. Presidente Juárez y López Portillo la convierte en una opción ideal para operaciones que requieren tiempos de entrega eficientes y cobertura total de la CDMX y Zona Metropolitana",
     addresses: [
       {
         name: "Almacén Tlalnepantla",
@@ -76,10 +105,11 @@ const spanishTranslations: any = {
           "Perfecto para e-commerce, cadenas de retail y logística urbana",
         ],
         idealFor: [
-          "Logística y distribución metropolitana",
-          "Operaciones de última milla y comercio electrónico",
-          "Courier, paquetería y mensajería exprés",
-          "Centros de cross-dock y consolidación",
+          "Operaciones de logística urbana",
+          "Centros de distribución",
+          "Última milla",
+          "E-commerce",
+          "Mensajería y paquetería",
           "Manufactura ligera",
         ],
       },
@@ -142,34 +172,34 @@ const spanishTranslations: any = {
     subtitle: "Perfecto para diversas operaciones industriales y logísticas",
     industries: [
       {
-        id: "ecommerce",
-        name: "Comercio Electrónico",
-        description: "Centros de cumplimiento y distribución de última milla",
-      },
-      {
-        id: "logistics",
-        name: "Logística y Distribución",
-        description: "3PL, servicios de mensajería y paquetería",
+        id: "pharma",
+        name: "Operaciones de logística urbana",
+        description: "Ideal para logística urbana y operaciones de última milla",
       },
       {
         id: "retail",
-        name: "Cadena de Suministro Minorista",
-        description: "Minoristas y distribución de bienes de consumo rápido",
-      },
-      {
-        id: "manufacturing",
-        name: "Manufactura",
-        description: "Manufactura ligera y ensamblaje",
-      },
-      {
-        id: "pharma",
-        name: "Farmacéutico",
-        description: "Distribución y almacenamiento farmacéutico",
+        name: "Centros de distribución",
+        description: "Distribución centralizada y centros de cadena de suministro",
       },
       {
         id: "automotive",
-        name: "Automotriz",
-        description: "Piezas y componentes automotrices",
+        name: "Última milla",
+        description: "Entrega de última milla y cumplimiento",
+      },
+      {
+        id: "ecommerce",
+        name: "E-commerce",
+        description: "Cumplimiento y almacenamiento de comercio electrónico",
+      },
+      {
+        id: "logistics",
+        name: "Mensajería y paquetería",
+        description: "Mensajería, paquetería y entrega exprés",
+      },
+      {
+        id: "manufacturing",
+        name: "Manufactura ligera",
+        description: "Manufactura ligera y ensamblaje",
       },
     ],
   },
@@ -179,6 +209,16 @@ const spanishTranslations: any = {
     pricing: "Contactar para precios",
     pricingModel: "Términos de Renta",
     leaseTerms: "Contrato mínimo de 36 meses",
+    availableAreas: {
+      summary: "Desde 2,915 m² hasta 8,974 m²",
+      subdividable: "Posibilidad de dividir en 3 módulos",
+      note: "Disponibilidad inmediata y futura (según módulo)",
+    },
+    modules: [
+      { id: "1027", sqm: "3,142", availability: "Disponibilidad inmediata" },
+      { id: "1025", sqm: "2,915", availability: "Disponible abril 2026" },
+      { id: "1023", sqm: "2,918", availability: "Disponible abril 2026" },
+    ],
   },
   ctas: {
     primary: {
@@ -220,8 +260,8 @@ const spanishTranslations: any = {
 // Additional UI translations
 const uiTranslations: Record<string, Record<string, string>> = {
   en: {
-    'locationComparison.title': 'Choose Your Ideal Location',
-    'locationComparison.subtitle': 'A strategic location, optimized for operational efficiency. Discover how it can perfectly support your business needs.',
+    'locationComparison.title': 'The location your operation needs',
+    'locationComparison.subtitle': 'Located in Tlalnepantla, State of Mexico, this industrial warehouse sits within one of the most established logistics corridors in the Mexico City Metropolitan Area. Its immediate connectivity to Periférico Norte, Gustavo Baz, Av. Presidente Juárez, and López Portillo makes it an ideal option for operations that require efficient delivery times and full coverage of Mexico City and the surrounding metropolitan area.',
     'locationComparison.keyAdvantages': 'Key Advantages',
     'locationComparison.idealFor': 'Ideal For',
     'locationComparison.openInMaps': 'Open in Google Maps',
@@ -233,6 +273,8 @@ const uiTranslations: Record<string, Record<string, string>> = {
     'availability.leaseTerms': 'Lease Terms',
     'availability.getQuote': 'Get Quote',
     'availability.contactUs': 'Contact Us',
+    'availability.availableAreasTitle': 'Available areas',
+    'availability.availableModulesTitle': 'Available modules',
     'cta.title': 'Ready to Get Started?',
     'cta.subtitle': 'Explore our Class A warehouse facilities and discover how we can support your business operations.',
     'contact.title': 'Contact Us',
@@ -254,8 +296,8 @@ const uiTranslations: Record<string, Record<string, string>> = {
     'footer.disclaimer': 'Disclaimer',
   },
   es: {
-    'locationComparison.title': 'Elija Su Ubicación Ideal',
-    'locationComparison.subtitle': 'Una ubicación estratégica, optimizada para la eficiencia operativa. Descubra cómo puede apoyar perfectamente las necesidades de su negocio.',
+    'locationComparison.title': 'Una solución estratégica para crecer en la CDMX',
+    'locationComparison.subtitle': 'Esta nave combina ubicación, infraestructura y flexibilidad, ofreciendo una plataforma ideal para empresas que buscan eficiencia operativa dentro del principal mercado de consumo del país',
     'locationComparison.keyAdvantages': 'Ventajas Clave',
     'locationComparison.idealFor': 'Ideal Para',
     'locationComparison.openInMaps': 'Abrir en Google Maps',
@@ -267,6 +309,8 @@ const uiTranslations: Record<string, Record<string, string>> = {
     'availability.leaseTerms': 'Términos de Arrendamiento',
     'availability.getQuote': 'Obtener Cotización',
     'availability.contactUs': 'Solicita Cotización',
+    'availability.availableAreasTitle': 'Áreas disponibles',
+    'availability.availableModulesTitle': 'Módulos disponibles',
     'cta.title': '¿Listo para Comenzar?',
     'cta.subtitle': 'Explora nuestras naves industriales Clase A y descubre cómo podemos apoyar tus operaciones.',
     'contact.title': 'Contáctenos',

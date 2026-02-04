@@ -11,8 +11,8 @@ export const warehouseConfig = {
 
   // Banner/Hero Section
   banner: {
-    title: "BRAND-NEW CLASS A INDUSTRIAL FACILITY FOR LEASE",
-    subtitle: "Prime location for logistics & last-mile operations",
+    title: "Industrial Warehouse for Lease in Tlalnepantla",
+    subtitle: "Strategic location for logistics, distribution, and last-mile operations in Mexico City",
     description: "Introducing one of the most attractive new industrial developments in Tlalnepantla—a Class A distribution facility strategically located in the highly demanded Barrientos submarket, the epicenter of logistics, e-commerce, transportation, and last-mile delivery for Mexico City and the entire Metro Area.",
     ctaText: "Book a Tour",
     ctaLink: "#contact",
@@ -23,47 +23,76 @@ export const warehouseConfig = {
 
   // Warehouse Features
   warehouseFeatures: {
-    title: "Key Building Features",
-    subtitle: "Class \"A\" Specifications",
+    title: "Spaces designed for high-performance logistics operations",
+    subtitle: "The property features industrial specifications that enable efficient, secure, and flexible operations, making it well suited for e-commerce, distribution centers, courier services,parcel delivery, and last-mile logistics",
+    
     features: [
       {
-        label: "Site Area",
-        value: "9,791 m²",
-        icon: "area",
-      },
-      {
-        label: "Total Rentable Area",
-        value: "7,390 m²",
-        icon: "rentable",
-      },
-      {
-        label: "Warehouse Area",
-        value: "6,590 m²",
-        icon: "warehouse",
-      },
-      {
-        label: "Mezzanine",
-        value: "800 m²",
-        description: "Ideal for offices or operational growth",
-        icon: "mezzanine",
-      },
-      {
-        label: "Clear Height",
-        value: "11.0 m",
+        label: "Minimum clear height",
+        value: "11.00 m",
         icon: "height",
       },
       {
-        label: "Column Spacing",
-        value: "12 × 24 m",
-        description: "Optimal for racking and internal maneuvering",
+        label: "Front-dock configuration",
+        value: "Yes",
+        icon: "warehouse",
+      },
+      {
+        label: "Loading docks",
+        value: "4 with dock levelers",
+        icon: "warehouse",
+      },
+      {
+        label: "Grade-level doors",
+        value: "2",
+        icon: "warehouse",
+      },
+      {
+        label: "Column spacing",
+        value: "10 m × 28 m",
         icon: "spacing",
+      },
+      {
+        label: "Roof system",
+        value: "Metal deck & thermal-acoustic insulation",
+        icon: "mezzanine",
+      },
+      {
+        label: "Walls",
+        value: "Concrete block and metal panel",
+        icon: "area",
+      },
+      {
+        label: "Basement clear height",
+        value: "4.80 m",
+        icon: "mezzanine",
+      },
+      {
+        label: "Integrated office areas",
+        value: "Yes",
+        icon: "rentable",
+      },
+      {
+        label: "Transformer",
+        value: "300 KVA",
+        icon: "area",
+      },
+      {
+        label: "Parking",
+        value: "28 vehicles",
+        icon: "area",
+      },
+      {
+        label: "Fire protection",
+        value: "System with extinguishers",
+        icon: "area",
       },
     ],
   },
 
   // Location Information
   locations: {
-    title: "Prime Strategic Location",
+    title: "A strategic solution to grow in Mexico City",
     subtitle: "Direct, efficient access to key industrial zones",
     highlights: [
       "Mexico City",
@@ -74,7 +103,7 @@ export const warehouseConfig = {
       "Cuautitlan-Tultitlan-Tepotzotlan industrial submarkets",
       "Key logistics and industrial hubs in the northern Metro region",
     ],
-    description: "This area is one of the most consolidated and in-demand logistics zones in the country, with extremely low vacancy rates and a privileged urban distribution position.",
+    description: "This warehouse combines location, infrastructure, and flexibility, offering an ideal platform for companies seeking operational efficiency within Mexico’s largest consumer market",
     addresses: [
       {
         name: "Tlalnepantla Warehouse",
@@ -87,10 +116,11 @@ export const warehouseConfig = {
           "Ideal for e-commerce, retail supply chain, and urban logistics",
         ],
         idealFor: [
-          "Metropolitan logistics & distribution",
-          "Last-mile and e-commerce operations",
-          "Courier, parcel & express delivery",
-          "Cross-docking and consolidation centers",
+          "Urban logistics operations",
+          "Distribution centers",
+          "Last-mile",
+          "E-commerce",
+          "Courier and parcel services",
           "Light manufacturing",
         ],
       },
@@ -158,34 +188,34 @@ export const warehouseConfig = {
     subtitle: "Perfect for various industrial and logistics operations",
     industries: [
       {
-        id: "ecommerce",
-        name: "E-commerce",
-        description: "Fulfillment centers and last-mile distribution",
-      },
-      {
-        id: "logistics",
-        name: "Logistics & Distribution",
-        description: "3PL, Courier and parcel services",
+        id: "pharma",
+        name: "Urban logistics operations",
+        description: "Ideal for urban logistics and last-mile operations",
       },
       {
         id: "retail",
-        name: "Retail Supply Chain",
-        description: "Retailers and FMCG distribution",
-      },
-      {
-        id: "manufacturing",
-        name: "Manufacturing",
-        description: "Light manufacturing and assembly",
-      },
-      {
-        id: "pharma",
-        name: "Pharmaceutical",
-        description: "Pharma distribution and storage",
+        name: "Distribution centers",
+        description: "Centralized distribution and supply chain hubs",
       },
       {
         id: "automotive",
-        name: "Automotive",
-        description: "Automotive parts and components",
+        name: "Last-mile",
+        description: "Last-mile delivery and fulfillment",
+      },
+      {
+        id: "ecommerce",
+        name: "E-commerce",
+        description: "E-commerce fulfillment and storage",
+      },
+      {
+        id: "logistics",
+        name: "Courier and parcel services",
+        description: "Courier, parcel and express delivery",
+      },
+      {
+        id: "manufacturing",
+        name: "Light manufacturing",
+        description: "Light manufacturing and assembly",
       },
     ],
   },
@@ -197,6 +227,16 @@ export const warehouseConfig = {
     pricing: "Contact for pricing",
     pricingModel: "Per SQM plus VAT per month",
     leaseTerms: "36 months minimum contract",
+    availableAreas: {
+      summary: "From 2,915 sqm up to 8,974 sqm",
+      subdividable: "Subdividable into 3 modules",
+      note: "Immediate and future availability (depending on module)",
+    },
+    modules: [
+      { id: "1027", sqm: "3,142", availability: "Immediate availability" },
+      { id: "1025", sqm: "2,915", availability: "Available April 2026" },
+      { id: "1023", sqm: "2,918", availability: "Available April 2026" },
+    ],
   },
 
   // Contact Information

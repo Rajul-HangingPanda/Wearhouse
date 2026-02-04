@@ -4,6 +4,7 @@ import banner2 from './banner/banner2.png';
 import bg from './banner/bg.png';
 import bg1 from './banner/bg1.png';
 import bg2 from './banner/bg2.png';
+import { StaticImageData } from "next/image";
 
 // Sale images
 import saleImage from './saled/sale.png';
@@ -47,6 +48,59 @@ import warehouseLoc4 from './warehouse/loc4.png';
 import warehousePhase1 from './warehouse/phase1.png';
 import warehousePhase2 from './warehouse/phase2.png';
 import logo from './logo/newmark-logo-black.png';
+
+// Gallery images (assets/gallery)
+import gallery2 from './gallery/2.jpg';
+import gallery3 from './gallery/3.jpg';
+import gallery4 from './gallery/4.jpg';
+import gallery5 from './gallery/5.jpg';
+import gallery6 from './gallery/6.png';
+import gallery7 from './gallery/7.png';
+import gallery8 from './gallery/8.png';
+import gallery10 from './gallery/10.png';
+import gallery11 from './gallery/11.png';
+import gallery12 from './gallery/12.png';
+import gallery13 from './gallery/13.png';
+import gallery14 from './gallery/14.png';
+import gallery15 from './gallery/15.png';
+import gallery16 from './gallery/16.jpg';
+import gallery17 from './gallery/17.jpg';
+import gallery18 from './gallery/18.jpg';
+import gallery19 from './gallery/19.jpg';
+import gallery20 from './gallery/20.jpg';
+import gallery21 from './gallery/21.jpg';
+import gallery22 from './gallery/22.jpg';
+import gallery23 from './gallery/23.jpg';
+import gallery24 from './gallery/24.jpg';
+import gallery25 from './gallery/25.jpg';
+
+/** Gallery images array for the gallery component (numeric order 2–8, 10–25) */
+export const galleryImages:StaticImageData[] = [
+  gallery2,
+  gallery3,
+  gallery4,
+  gallery5,
+  gallery6,
+  gallery7,
+  gallery8,
+  gallery10,
+  gallery11,
+  gallery12,
+  gallery13,
+  gallery14,
+  gallery15,
+  gallery16,
+  gallery17,
+  gallery18,
+  gallery19,
+  gallery20,
+  gallery21,
+  gallery22,
+  gallery23,
+  gallery24,
+  gallery25,
+];
+
 //
 // Warehouse videos - using paths instead of imports
 
@@ -86,6 +140,7 @@ export {
   warehouseLoc4,
   warehousePhase1,
   warehousePhase2,
+  // galleryImages,
   // Logo
   logo,
   //

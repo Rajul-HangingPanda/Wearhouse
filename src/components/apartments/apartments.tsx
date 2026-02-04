@@ -129,7 +129,7 @@ export default function Apartments() {
                       {/* Value */}
                       <div className="mb-2 mx-9">
                         <span
-                          className="md:text-2xl text-lg  font-bold text-[#173C65]"
+                          className="md:text-base text-normal  font-normal text-[#173C65]"
                         >
                           {card.value}
                         </span>
